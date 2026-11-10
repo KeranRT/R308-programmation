@@ -1,4 +1,3 @@
-
 # TP1 - Partie A
 # Exercice 1 : Dictionnaire d'étudiants
 
@@ -8,7 +7,7 @@ etudiants = {
     "Claire": 9.5
 }
 
-print(etudiants)
+
 
 
 # Exercice 2 : Fonctions
@@ -30,19 +29,9 @@ def meilleur_etudiant(d):
     if len(d) == 0:
         return None
 
+    # On cherche le nom associé à la meilleure note.
     nom = max(d, key=d.get)
     return (nom, d[nom])
-
-
-
-# Test des fonctions
-
-ajouter_etudiant(etudiants, "David", 17)
-ajouter_etudiant(etudiants, "Alice", 14)
-
-print("Étudiants :", etudiants)
-print("Moyenne :", moyenne_classe(etudiants))
-print("Meilleur étudiant :", meilleur_etudiant(etudiants))
 
 
 
@@ -64,6 +53,7 @@ def charger(fichier):
         with open(fichier, "r", encoding="utf-8") as f:
             for ligne in f:
                 try:
+                    # Chaque ligne contient un nom et une note séparés par deux-points.
                     nom, note = ligne.strip().split(":")
                     if not nom:
                         continue
@@ -79,12 +69,12 @@ def charger(fichier):
     return d
 
 
-# Exercice 3 : Tests
+if __name__ == "__main__":
+    from pathlib import Path
 
-sauvegarder(etudiants, "tp1/etudiants.txt")
-
-notes_chargees = charger("tp1/etudiants.txt")
-print("Notes rechargées :", notes_chargees)
-
-# Test d'un fichier inexistant
-charger("tp1/inexistant.txt")
+    # Le fichier reste dans le dossier du script, quel que soit le dossier de lancement.
+    fichier = Path(__file__).with_name("etudiants.txt")
+    print("Moyenne :", moyenne_classe(etudiants))
+    print("Meilleur étudiant :", meilleur_etudiant(etudiants))
+    sauvegarder(etudiants, fichier)
+    print("Notes rechargées :", charger(fichier))
