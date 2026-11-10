@@ -19,4 +19,4 @@ TP3 : bibliothèque avec menu et sauvegarde dans `TP3/livres.csv`.
 Le chargement du CSV reconstruit les utilisateurs qui ont un emprunt en cours.
 Les utilisateurs sans emprunt ne sont pas enregistrés dans ce format.
 
-Les parties obligatoires sont réalisées ; les extensions et bonus ne sont pas inclus.
+
